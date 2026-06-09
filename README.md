@@ -13,8 +13,6 @@
 
   <img src="https://img.shields.io/badge/status-under%20review-orange?style=flat-square" />
 
-  <img src="https://img.shields.io/badge/arXiv-coming%20soon-blue?style=flat-square" />
-
   <img src="https://img.shields.io/badge/license-academic%20use%20only-red?style=flat-square" />
 
   <img src="https://img.shields.io/badge/python-3.11%2B-blue?style=flat-square" />

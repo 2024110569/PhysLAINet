@@ -1,9 +1,3 @@
-### Update: 2026.06.09
-The module invocation method has been optimized. You can now import modules such as `physlainet` and execute them via `physlainet.run()`.
-**Note**: All extracted files must be kept in the same directory as the original compressed package.
-
----
-
 ## Overview
 
 <p align="center">
@@ -81,3 +75,9 @@ The author retains all intellectual property rights of this project. Any unautho
 This is an unpublished academic work. All contents in this repository are temporary review materials and do not represent the final published version. Contents may be adjusted, optimized and updated during the peer review process. The author shall not be liable for any unauthorized use or misinterpretation of the current resources by third parties.
 
 2026.05.31
+
+---
+
+### Update: 2026.06.09
+The module invocation method has been optimized. You can now import modules such as `physlainet` and execute them via `physlainet.run()`.
+**Note**: All extracted files must be kept in the same directory as the original compressed package.

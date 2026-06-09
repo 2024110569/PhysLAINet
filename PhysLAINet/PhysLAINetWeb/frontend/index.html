@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PhysLAINet LAI Estimation System</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+    <main class="app-shell">
+        <header class="topbar">
+            <div>
+                <h1>PhysLAINet LAI Estimation System</h1>
+                <p>Upload images and phenology data, draw ROI, complete feature extraction, model inference and result export.</p>
+            </div>
+            <label class="api-box">
+                <span>API</span>
+                <input id="apiBase" value="http://127.0.0.1:8000" />
+            </label>
+        </header>
+
+        <section class="workspace">
+            <aside class="panel upload-panel">
+                <div class="section-head">
+                    <h2>Data Upload</h2>
+                    <button id="submitJob" class="primary">Upload Data</button>
+                </div>
+
+                <label class="file-row">
+                    <span>Upload Mode</span>
+                    <select id="uploadMode">
+                        <option value="raw">Raw Bands + Whiteboard</option>
+                        <option value="calibrated">Calibrated Multiband TIF</option>
+                    </select>
+                </label>
+
+                <div id="rawUploadFields">
+                <div class="period">
+                    <h3>Current Period Image</h3>
+                    <div class="grid-inputs" data-period="current"></div>
+                </div>
+
+                <div class="period">
+                    <h3>Lag Period Image</h3>
+                    <div class="grid-inputs" data-period="lag"></div>
+                </div>
+                </div>
+
+                <div id="calibratedUploadFields" hidden>
+                    <div class="period">
+                        <h3>Current Calibrated Image</h3>
+                        <label class="file-row">
+                            <span>Multiband TIF</span>
+                            <input id="current_calibrated" type="file" accept=".tif,.tiff,image/tiff" />
+                        </label>
+                        <div class="channel-map" data-period="current"></div>
+                    </div>
+
+                    <div class="period">
+                        <h3>Lag Calibrated Image</h3>
+                        <label class="file-row">
+                            <span>Multiband TIF</span>
+                            <input id="lag_calibrated" type="file" accept=".tif,.tiff,image/tiff" />
+                        </label>
+                        <div class="channel-map" data-period="lag"></div>
+                    </div>
+                </div>
+
+                <label class="file-row">
+                    <span>Phenology Excel</span>
+                    <input id="phenology" type="file" accept=".xlsx" />
+                </label>
+            </aside>
+
+            <section class="viewer-panel">
+                <div class="progress-wrap">
+                    <div class="progress-meta">
+                        <span id="stepText">Waiting for upload</span>
+                        <strong id="progressText">0%</strong>
+                    </div>
+                    <div class="progress-track">
+                        <div id="progressBar"></div>
+                    </div>
+                </div>
+
+                <div class="canvas-toolbar">
+                    <span id="panelStatus" class="panel-status">Select the whiteboard area one by one after uploading</span>
+                    <button id="savePanelRoi" class="primary" hidden>Confirm Current Whiteboard ROI</button>
+                    <select id="editTarget" disabled>
+                        <option value="lag">Adjust Lag</option>
+                        <option value="current">Adjust Current</option>
+                    </select>
+                    <button id="modeAdjust" disabled>Adjust Image</button>
+                    <button id="modeRoi" disabled>Draw ROI</button>
+                    <button id="resetTransform" disabled>Reset Transform</button>
+                    <button id="clearRois">Clear ROIs</button>
+                    <label class="toggle">
+                        <input id="showValues" type="checkbox" checked />
+                        <span>Show Values</span>
+                    </label>
+                    <label class="range">
+                        <span>Current Opacity</span>
+                        <input id="currentOpacity" type="range" min="0" max="1" step="0.05" value="0.75" />
+                    </label>
+                    <label class="range">
+                        <span>Lag Opacity</span>
+                        <input id="lagOpacity" type="range" min="0" max="1" step="0.05" value="0.55" />
+                    </label>
+                    <label class="range">
+                        <span>Scale</span>
+                        <input id="scaleControl" type="range" min="0.5" max="2" step="0.01" value="1" disabled />
+                    </label>
+                    <label class="range">
+                        <span>Rotate</span>
+                        <input id="rotationControl" type="range" min="-180" max="180" step="0.5" value="0" disabled />
+                    </label>
+                    <button id="predict" class="primary" disabled>Calculate LAI</button>
+                </div>
+
+                <div class="canvas-stage" id="canvasStage">
+                    <canvas id="imageCanvas"></canvas>
+                    <div id="emptyState">Whiteboard images will be displayed here one by one after uploading; current RGB image will be displayed after calibration board selection.</div>
+                </div>
+
+                <div class="result-bar">
+                    <span id="roiCount">ROI: 0</span>
+                    <a id="excelLink" class="download disabled" href="#">Download Excel</a>
+                    <a id="csvLink" class="download disabled" href="#">Download CSV</a>
+                    <button id="downloadPng" disabled>Download Heatmap Full Size</button>
+                </div>
+
+                <div class="table-wrap">
+                    <table id="resultTable">
+                        <thead>
+                            <tr>
+                                <th>ROI</th>
+                                <th>X</th>
+                                <th>Y</th>
+                                <th>Width</th>
+                                <th>Height</th>
+                                <th>LAI</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="./app.js"></script>
+</body>
+</html>

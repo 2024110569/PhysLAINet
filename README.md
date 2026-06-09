@@ -22,7 +22,7 @@ This repository contains supplementary materials for a submitted academic paper,
 
   <img src="https://img.shields.io/badge/license-academic%20use%20only-red?style=flat-square" />
 
-  <img src="https://img.shields.io/badge/python-3.8%2B-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/python-3.11%2B-blue?style=flat-square" />
 
 </p>
 

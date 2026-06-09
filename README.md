@@ -5,7 +5,7 @@ The module invocation method has been optimized. You can now import modules such
 ---
 
 ## Overview
-This repository contains supplementary materials for a submitted academic paper, including the self-designed models, comparative models, experimental datasets, and an end-to-end interactive web system built upon the method proposed in this paper. *The data files are uploaded as a compressed package. The password is the email address of the first author. This ensures that only reviewers and editors can access the files during the review process. Once the manuscript is accepted, access will be available to all via the information provided in the paper.*
+This repository contains supplementary materials for a submitted academic paper, including the self-designed models, comparative models, experimental datasets, and an end-to-end interactive web system built upon the method proposed in this paper. *The data files are uploaded as a compressed package. The password is the email address of the first author. This ensures that only reviewers and editors can access the files during the review process. Once the manuscript is accepted, access will be available to all via the information provided in the paper. Furthermore, considering the extremely large size of raw image data (up to several hundred gigabytes), only structured data with pre-extracted features is uploaded here.*
 
 ## Repository Contents
 This repository provides the following resources for academic peer review (the list is non-exhaustive):
@@ -13,7 +13,7 @@ This repository provides the following resources for academic peer review (the l
 - Mainstream comparative models for benchmark experiments
 - Experimental datasets
 - End-to-end web application developed based on the proposed method
-Considering the extremely large size of raw image data (up to several hundred gigabytes), only structured data with pre-extracted features is uploaded here.
+
 ---
 ## Note: Web system
 ### Backend Directory Structure
